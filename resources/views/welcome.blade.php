@@ -75,6 +75,7 @@
                  <li class="nav-item">
                     <a class="nav-link page-scroll" href="#statistic">STATISTIK</a>
                 </li>
+                
 
                 <!-- Dropdown Menu -->          
                 {{-- <li class="nav-item dropdown">
@@ -90,6 +91,37 @@
                 <li class="nav-item">
                     <a class="nav-link page-scroll" href="#contact">DONASI</a>
                 </li>
+
+                 @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+                                    <a class="dropdown-item" href="/home">Dashboard</a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+
             </ul>
             <span class="nav-item social-icons">
                 <span class="fa-stack">
@@ -465,104 +497,7 @@
     </div> <!-- end of basic-1 -->
     <!-- end of video -->
 
-        <div class="slider-1">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-
-                        <!-- Card Slider -->
-                        <div class="slider-container">
-                            <div class="swiper-container card-slider">
-                                <div class="swiper-wrapper">
-                                    
-                                    <!-- Slide -->
-                                    <div class="swiper-slide">
-                                        <div class="card">
-                                            <img class="card-image" src="https://w7.pngwing.com/pngs/349/288/png-transparent-teacher-education-student-course-school-avatar-child-face-heroes.png" alt="alternative">
-                                            <div class="card-body">
-                                                <p class="testimonial-text">Rp.100.000</p>
-                                                <p class="testimonial-author">-N-</p>
-                                            </div>
-                                        </div>
-                                    </div> <!-- end of swiper-slide -->
-                                    <!-- end of slide -->
-            
-                                    <!-- Slide -->
-                                    <div class="swiper-slide">
-                                        <div class="card">
-                                            <img class="card-image" src="https://www.kvkpratapgarh.org/controller/assets/staff/admin.jpg" alt="alternative">
-                                            <div class="card-body">
-                                                <p class="testimonial-text">Rp.500.000</p>
-                                                <p class="testimonial-author">Hamba Allah</p>
-                                            </div>
-                                        </div>        
-                                    </div> <!-- end of swiper-slide -->
-                                    <!-- end of slide -->
-            
-                                    <!-- Slide -->
-                                    <div class="swiper-slide">
-                                        <div class="card">
-                                            <img class="card-image" src="https://w7.pngwing.com/pngs/349/288/png-transparent-teacher-education-student-course-school-avatar-child-face-heroes.png" alt="alternative">
-                                            <div class="card-body">
-                                                <p class="testimonial-text">Rp.50.000</p>
-                                                <p class="testimonial-author">Upin</p>
-                                            </div>
-                                        </div>        
-                                    </div> <!-- end of swiper-slide -->
-                                    <!-- end of slide -->
-            
-                                    <!-- Slide -->
-                                    <div class="swiper-slide">
-                                        <div class="card">
-                                            <img class="card-image" src="https://www.kvkpratapgarh.org/controller/assets/staff/admin.jpg" alt="alternative">
-                                            <div class="card-body">
-                                                <p class="testimonial-text">Rp.1.000.000</p>
-                                                <p class="testimonial-author">Bpk.Samsul</p>
-                                            </div>
-                                        </div>
-                                    </div> <!-- end of swiper-slide -->
-                                    <!-- end of slide -->
-            
-                                    <!-- Slide -->
-                                    <div class="swiper-slide">
-                                        <div class="card">
-                                            <img class="card-image" src="https://w7.pngwing.com/pngs/349/288/png-transparent-teacher-education-student-course-school-avatar-child-face-heroes.png" alt="alternative">
-                                            <div class="card-body">
-                                                <p class="testimonial-text">Rp.125.000</p>
-                                                <p class="testimonial-author">-L-</p>
-                                            </div>
-                                        </div>        
-                                    </div> <!-- end of swiper-slide -->
-                                    <!-- end of slide -->
-            
-                                    <!-- Slide -->
-                                    <div class="swiper-slide">
-                                        <div class="card">
-                                            <img class="card-image" src="https://www.kvkpratapgarh.org/controller/assets/staff/admin.jpg" alt="alternative">
-                                            <div class="card-body">
-                                                <p class="testimonial-text">Rp.135.000</p>
-                                                <p class="testimonial-author">-K-</p>
-                                            </div>
-                                        </div>        
-                                    </div> <!-- end of swiper-slide -->
-                                    <!-- end of slide -->
-                                
-                                </div> <!-- end of swiper-wrapper -->
-            
-                                <!-- Add Arrows -->
-                                <div class="swiper-button-next"></div>
-                                <div class="swiper-button-prev"></div>
-                                <!-- end of add arrows -->
-            
-                            </div> <!-- end of swiper-container -->
-                        </div> <!-- end of slider-container -->
-                        <!-- end of card slider -->
-
-                    </div> <!-- end of col -->
-                </div> <!-- end of row -->
-            </div> <!-- end of container -->
-        </div> <!-- end of slider-1 -->
-
+        {{--  --}}
     <!-- end of testimonials -->
 
 
